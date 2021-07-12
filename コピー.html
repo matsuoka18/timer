@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>コピー</title>
+  </head>
+  <body>
+    <h2 class="h2">カップヌードルタイマー</h2>
+    <h1 class="p1"id="count_1">3:00</h1>
+    <div class="d2">
+    <button  class="b1"id="start">スタート</button>
+    <button class="b1" id="stop">ストップ</button>
+    <button class="b1" id="reset">リセット</button>
+    <audio id="audio1">
+     <source src="makk.mp3">
+    </audio>
+
+    </audio>
+    <style media="screen">
+    .p1{
+      width:310px;
+      text-align: center;
+    }
+      .h2{
+        background-color:silver;
+        width:310px;
+        text-align:center;
+      }
+      .b1{
+        width:80px;
+        height:30px;
+        background-color:white;
+        border-radius: 10px;
+        margin-right: 20px;
+        border:none;
+   position:relative;
+   top:30%;
+   left:2%;
+      }
+    .d2{
+        position:absolute;top:130px;
+        background-color:silver;
+        width:310px;
+        height:60px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+    <script>
+      var count = 180;
+      var min = 0;
+      var sec = 0;
+      var stp = null;
+      var i   = 0;
+
+      function count_start(){
+          i++;
+          if(i === 1){
+              stp = setInterval(count_down,10);
+          } else {
+              alert("2度押し厳禁やで！");
+              i = 0;
+          }
+      }
+
+    function count_down(){
+      if(count === 0){
+        document.getElementById('audio1').load();
+        document.getElementById('audio1').play();
+      var text = document.getElementById('text');
+      clearInterval(stp);
+
+    }else{
+      count--;
+      min = parseInt(count / 60);
+      sec = count % 60;
+      var count_down = document.getElementById('count_1');
+      count_down.innerHTML = ("0"+min).slice(-2) + ":" + ("0"+sec).slice(-2);
+    }
+}
+ function count_stop(){
+  document.getElementById('audio1').pause();
+   clearInterval(stp);
+   i = 0;
+ }
+
+function count_reset(){
+document.getElementById('audio1').pause();
+clearInterval(stp);
+count = 180;
+min = parseInt(count / 60);
+sec = count % 60;
+var count_down = document.getElementById('count_1');
+count_down.innerHTML = ("0"+min).slice(-2) + ":" + ("0"+sec).slice(-2);
+}
+window.onload = function(){
+      var start = document.getElementById('start');
+      start.addEventListener("click",count_start,false);
+      var stop = document.getElementById('stop');
+      stop.addEventListener('click',count_stop,false);
+      var reset = document.getElementById('reset');
+      reset.addEventListener('click',count_reset,false);
+    }
+    </script>
+  </body>
+</html>
