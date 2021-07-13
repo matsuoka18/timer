@@ -18,7 +18,6 @@
     <button class="b1" id="reset">リセット</button>
      
     <audio id="audio1">
-     <iframe src="https://raw.githubusercontent.com/anars/blank-audio/master/500-milliseconds-of-silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
      <source src="makk.mp3" type="audio/mp3">
     </audio>
     <script>
@@ -29,6 +28,8 @@
       var i   = 0;
 
       function count_start(){
+          document.getElementById('audio1').load();
+        document.getElementById('audio1').play();
           i++;
           if(i === 1){
               stp = setInterval(count_down,10);
