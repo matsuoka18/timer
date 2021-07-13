@@ -1,12 +1,12 @@
-.p1{
-.width:150px;
+.p{
+width:150px;
 background-color:orange;
 text-align:center;
 font-size:20px;
 font-weight:bold;
 }
 
-.p{
+.p1{
      width:100vw;
      text-align: center;
     }
